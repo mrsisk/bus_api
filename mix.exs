@@ -27,6 +27,7 @@ defmodule ShuttleApi.MixProject do
       {:ash, "~> 2.9.5"},
       {:ash_json_api, "~> 0.31.1"},
       {:plug_cowboy, "~> 2.0"},
+      {:plug, "~> 1.14"},
       {:bandit, "~> 0.6"},
       {:ash_postgres, "~> 1.3.6"}
     ]

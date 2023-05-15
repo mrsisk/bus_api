@@ -7,5 +7,6 @@ defmodule ShuttleApi.Booking.Registry do
     entry ShuttleApi.Booking.Resources.Location
     entry ShuttleApi.Booking.Resources.Route
     entry ShuttleApi.Booking.Resources.GeoPoint
+    entry ShuttleApi.Booking.Resources.Trip
   end
 end

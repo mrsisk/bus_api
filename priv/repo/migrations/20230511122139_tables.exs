@@ -16,6 +16,17 @@ defmodule ShuttleApi.Repo.Migrations.Tables do
       add :updated_at, :utc_datetime_usec, null: false, default: fragment("now()")
     end
 
+    create table(:trip, primary_key: false) do
+      add :id, :uuid, null: false, primary_key: true
+      add :description, :text
+      add :fee, :decimal
+      add :depart_time, :utc_datetime_usec
+      add :arrive_time, :utc_datetime_usec
+      add :inserted_at, :utc_datetime_usec, null: false, default: fragment("now()")
+      add :updated_at, :utc_datetime_usec, null: false, default: fragment("now()")
+      add :route_id, :uuid
+    end
+
     create table(:seat, primary_key: false) do
       add :id, :uuid, null: false, primary_key: true
       add :label, :text
@@ -33,11 +44,25 @@ defmodule ShuttleApi.Repo.Migrations.Tables do
 
     create table(:route, primary_key: false) do
       add :id, :uuid, null: false, primary_key: true
+    end
+
+    alter table(:trip) do
+      modify :route_id,
+             references(:route,
+               column: :id,
+               name: "trip_route_id_fkey",
+               type: :uuid,
+               prefix: "public"
+             )
+    end
+
+    alter table(:route) do
       add :name, :text
       add :inserted_at, :utc_datetime_usec, null: false, default: fragment("now()")
       add :updated_at, :utc_datetime_usec, null: false, default: fragment("now()")
       add :to_id, :uuid
       add :from_id, :uuid
+      add :vehicle_id, :uuid
     end
 
     create table(:location, primary_key: false) do
@@ -57,6 +82,14 @@ defmodule ShuttleApi.Repo.Migrations.Tables do
              references(:location,
                column: :id,
                name: "route_from_id_fkey",
+               type: :uuid,
+               prefix: "public"
+             )
+
+      modify :vehicle_id,
+             references(:vehicle,
+               column: :id,
+               name: "route_vehicle_id_fkey",
                type: :uuid,
                prefix: "public"
              )
@@ -101,18 +134,38 @@ defmodule ShuttleApi.Repo.Migrations.Tables do
 
     drop constraint(:route, "route_from_id_fkey")
 
+    drop constraint(:route, "route_vehicle_id_fkey")
+
     alter table(:route) do
+      modify :vehicle_id, :uuid
       modify :from_id, :uuid
       modify :to_id, :uuid
     end
 
     drop table(:location)
 
+    alter table(:route) do
+      remove :vehicle_id
+      remove :from_id
+      remove :to_id
+      remove :updated_at
+      remove :inserted_at
+      remove :name
+    end
+
+    drop constraint(:trip, "trip_route_id_fkey")
+
+    alter table(:trip) do
+      modify :route_id, :uuid
+    end
+
     drop table(:route)
 
     drop constraint(:seat, "seat_vehicle_id_fkey")
 
     drop table(:seat)
+
+    drop table(:trip)
 
     drop table(:vehicle)
   end

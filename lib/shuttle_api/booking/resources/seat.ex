@@ -1,5 +1,5 @@
 defmodule ShuttleApi.Booking.Resources.Seat do
-  use Ash.Resource, data_layer: AshPostgres.DataLayer
+  use Ash.Resource, data_layer: AshPostgres.DataLayer, extensions: [AshJsonApi.Resource]
 
   postgres do
     table "seat"
@@ -45,5 +45,17 @@ defmodule ShuttleApi.Booking.Resources.Seat do
 
   relationships do
     belongs_to :vehicle, ShuttleApi.Booking.Resources.Vehicle
+  end
+
+  json_api do
+    type "seat"
+
+    routes do
+      base("/seat")
+
+      get(:read)
+      index(:read)
+      post(:new_st)
+    end
   end
 end

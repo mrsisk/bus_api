@@ -28,10 +28,15 @@ defmodule ShuttleApi.Booking.Resources.Vehicle do
 
   relationships do
     has_many :seats, ShuttleApi.Booking.Resources.Seat
+    has_many :routes, ShuttleApi.Booking.Resources.Route
   end
 
   json_api do
     type "vehicle"
+
+    includes [
+      :seats
+    ]
 
     routes do
       base("/vehicle")

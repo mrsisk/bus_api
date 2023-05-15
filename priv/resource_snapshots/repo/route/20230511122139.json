@@ -89,6 +89,31 @@
       "size": null,
       "source": "from_id",
       "type": "uuid"
+    },
+    {
+      "allow_nil?": true,
+      "default": "nil",
+      "generated?": false,
+      "primary_key?": false,
+      "references": {
+        "destination_attribute": "id",
+        "destination_attribute_default": null,
+        "destination_attribute_generated": null,
+        "multitenancy": {
+          "attribute": null,
+          "global": null,
+          "strategy": null
+        },
+        "name": "route_vehicle_id_fkey",
+        "on_delete": null,
+        "on_update": null,
+        "primary_key?": true,
+        "schema": "public",
+        "table": "vehicle"
+      },
+      "size": null,
+      "source": "vehicle_id",
+      "type": "uuid"
     }
   ],
   "base_filter": null,
@@ -96,7 +121,7 @@
   "custom_indexes": [],
   "custom_statements": [],
   "has_create_action": true,
-  "hash": "28E18C0A6231FAC195DB77F017AD0667F7B8F108FDC5D4DA4A60583EE1C24BAB",
+  "hash": "B73757E62EB5332F927547B3D41844B5AF0B3D1ED434CAA6EE179B0CB17DC58B",
   "identities": [],
   "multitenancy": {
     "attribute": null,

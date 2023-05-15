@@ -1,5 +1,5 @@
 defmodule ShuttleApi.Booking.Resources.Route do
-  use Ash.Resource, data_layer: AshPostgres.DataLayer
+  use Ash.Resource, data_layer: AshPostgres.DataLayer, extensions: [AshJsonApi.Resource]
 
   postgres do
     table "route"
@@ -10,7 +10,7 @@ defmodule ShuttleApi.Booking.Resources.Route do
     defaults [:create, :read, :update, :destroy]
 
     create :assign do
-      accept []
+      accept [:name]
 
       argument :from_id, :uuid do
         allow_nil? false
@@ -36,5 +36,24 @@ defmodule ShuttleApi.Booking.Resources.Route do
   relationships do
     belongs_to :to, ShuttleApi.Booking.Resources.Location
     belongs_to :from, ShuttleApi.Booking.Resources.Location
+    belongs_to :vehicle, ShuttleApi.Booking.Resources.Vehicle
+    has_many :trips, ShuttleApi.Booking.Resources.Trip
   end
+
+    json_api do
+    type "route"
+
+    includes [
+      from: [:geo_point], to: [:geo_point]
+    ]
+
+    routes do
+      base("/route")
+
+      get(:read)
+      index(:read)
+      post(:assign)
+    end
+  end
+
 end

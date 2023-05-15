@@ -10,7 +10,8 @@ defmodule ShuttleApi.Application do
     children = [
       # Starts a worker by calling: ShuttleApi.Worker.start_link(arg)
       # {ShuttleApi.Worker, arg}
-      ShuttleApi.Repo 
+      ShuttleApi.Repo,
+      {Plug.Cowboy, scheme: :http, plug: ShuttleApi.Booking.Router, options: [port: 4000]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
