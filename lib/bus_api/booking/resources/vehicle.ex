@@ -1,9 +1,9 @@
-defmodule ShuttleApi.Booking.Resources.Vehicle do
+defmodule BusApi.Booking.Resources.Vehicle do
   use Ash.Resource, data_layer: AshPostgres.DataLayer, extensions: [AshJsonApi.Resource]
 
   postgres do
     table "vehicle"
-    repo(ShuttleApi.Repo)
+    repo(BusApi.Repo)
   end
 
   actions do
@@ -27,16 +27,16 @@ defmodule ShuttleApi.Booking.Resources.Vehicle do
   end
 
   relationships do
-    has_many :seats, ShuttleApi.Booking.Resources.Seat
-    has_many :routes, ShuttleApi.Booking.Resources.Route
+    has_many :seats, BusApi.Booking.Resources.Seat
+    has_many :routes, BusApi.Booking.Resources.Route
   end
 
   json_api do
     type "vehicle"
 
-    includes [
+    includes([
       :seats
-    ]
+    ])
 
     routes do
       base("/vehicle")

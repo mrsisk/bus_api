@@ -17,7 +17,7 @@
       "primary_key?": false,
       "references": null,
       "size": null,
-      "source": "name",
+      "source": "label",
       "type": "text"
     },
     {
@@ -54,57 +54,7 @@
           "global": null,
           "strategy": null
         },
-        "name": "route_to_id_fkey",
-        "on_delete": null,
-        "on_update": null,
-        "primary_key?": true,
-        "schema": "public",
-        "table": "location"
-      },
-      "size": null,
-      "source": "to_id",
-      "type": "uuid"
-    },
-    {
-      "allow_nil?": true,
-      "default": "nil",
-      "generated?": false,
-      "primary_key?": false,
-      "references": {
-        "destination_attribute": "id",
-        "destination_attribute_default": null,
-        "destination_attribute_generated": null,
-        "multitenancy": {
-          "attribute": null,
-          "global": null,
-          "strategy": null
-        },
-        "name": "route_from_id_fkey",
-        "on_delete": null,
-        "on_update": null,
-        "primary_key?": true,
-        "schema": "public",
-        "table": "location"
-      },
-      "size": null,
-      "source": "from_id",
-      "type": "uuid"
-    },
-    {
-      "allow_nil?": true,
-      "default": "nil",
-      "generated?": false,
-      "primary_key?": false,
-      "references": {
-        "destination_attribute": "id",
-        "destination_attribute_default": null,
-        "destination_attribute_generated": null,
-        "multitenancy": {
-          "attribute": null,
-          "global": null,
-          "strategy": null
-        },
-        "name": "route_vehicle_id_fkey",
+        "name": "seat_vehicle_id_fkey",
         "on_delete": null,
         "on_update": null,
         "primary_key?": true,
@@ -121,14 +71,14 @@
   "custom_indexes": [],
   "custom_statements": [],
   "has_create_action": true,
-  "hash": "B73757E62EB5332F927547B3D41844B5AF0B3D1ED434CAA6EE179B0CB17DC58B",
+  "hash": "DBAC64FAF1499D46A39C0564F3EE4A4EB1DF918779DAF022853CB4F4B15C3B2B",
   "identities": [],
   "multitenancy": {
     "attribute": null,
     "global": null,
     "strategy": null
   },
-  "repo": "Elixir.ShuttleApi.Repo",
+  "repo": "Elixir.BusApi.Repo",
   "schema": null,
-  "table": "route"
+  "table": "seat"
 }

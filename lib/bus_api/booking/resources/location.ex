@@ -1,19 +1,18 @@
-defmodule ShuttleApi.Booking.Resources.Location do
+defmodule BusApi.Booking.Resources.Location do
   use Ash.Resource, data_layer: AshPostgres.DataLayer, extensions: [AshJsonApi.Resource]
   require Ash.Query
 
-
   postgres do
     table "location"
-    repo ShuttleApi.Repo
+    repo(BusApi.Repo)
   end
 
   actions do
     defaults [:create, :read, :update, :destroy]
 
-
     create :new do
       accept [:name]
+
       argument :geo_point, :map do
         allow_nil? false
       end
@@ -24,8 +23,6 @@ defmodule ShuttleApi.Booking.Resources.Location do
     read :all do
       prepare build(load: [:geo_point])
     end
-
-
   end
 
   attributes do
@@ -39,25 +36,25 @@ defmodule ShuttleApi.Booking.Resources.Location do
   end
 
   relationships do
-    has_one :geo_point, ShuttleApi.Booking.Resources.GeoPoint
+    has_one :geo_point, BusApi.Booking.Resources.GeoPoint
   end
 
   json_api do
     type "location"
 
-    includes [
+    includes([
       :geo_point
-    ]
-    routes do
-      base "/locations"
+    ])
 
-      get :read
-      index :read
-      post :new
-      #post :new, relationship_arguments: [:geo_point]
-    #  related :geo_point, :read
-     #relationship :geo_point, :read
+    routes do
+      base("/locations")
+
+      get(:read)
+      index(:read)
+      post(:new)
+      # post :new, relationship_arguments: [:geo_point]
+      #  related :geo_point, :read
+      # relationship :geo_point, :read
     end
   end
-
 end

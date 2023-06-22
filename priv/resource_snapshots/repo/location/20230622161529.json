@@ -46,14 +46,14 @@
   "custom_indexes": [],
   "custom_statements": [],
   "has_create_action": true,
-  "hash": "45EBCE432F3C13095695DA366C6E92F695645D900E01B7AE81BC203AE7C5B77A",
+  "hash": "741CA894BFB2A7F5EF49FD2E7E373DAAF11B6089E08BC7510146C10C5639DFCF",
   "identities": [],
   "multitenancy": {
     "attribute": null,
     "global": null,
     "strategy": null
   },
-  "repo": "Elixir.ShuttleApi.Repo",
+  "repo": "Elixir.BusApi.Repo",
   "schema": null,
   "table": "location"
 }

@@ -17,8 +17,18 @@
       "primary_key?": false,
       "references": null,
       "size": null,
-      "source": "label",
+      "source": "model",
       "type": "text"
+    },
+    {
+      "allow_nil?": true,
+      "default": "nil",
+      "generated?": false,
+      "primary_key?": false,
+      "references": null,
+      "size": null,
+      "source": "capacity",
+      "type": "bigint"
     },
     {
       "allow_nil?": false,
@@ -39,31 +49,6 @@
       "size": null,
       "source": "updated_at",
       "type": "utc_datetime_usec"
-    },
-    {
-      "allow_nil?": true,
-      "default": "nil",
-      "generated?": false,
-      "primary_key?": false,
-      "references": {
-        "destination_attribute": "id",
-        "destination_attribute_default": null,
-        "destination_attribute_generated": null,
-        "multitenancy": {
-          "attribute": null,
-          "global": null,
-          "strategy": null
-        },
-        "name": "seat_vehicle_id_fkey",
-        "on_delete": null,
-        "on_update": null,
-        "primary_key?": true,
-        "schema": "public",
-        "table": "vehicle"
-      },
-      "size": null,
-      "source": "vehicle_id",
-      "type": "uuid"
     }
   ],
   "base_filter": null,
@@ -71,14 +56,14 @@
   "custom_indexes": [],
   "custom_statements": [],
   "has_create_action": true,
-  "hash": "C3163FD150E86C6A22467651C896E78C581BD4F4B84D97EDCA2B5DCCC10371D1",
+  "hash": "9AB8BF2DE8DE4DB9428B057558B7AC30C53E185FA0F71BA3E681E37A8ED25494",
   "identities": [],
   "multitenancy": {
     "attribute": null,
     "global": null,
     "strategy": null
   },
-  "repo": "Elixir.ShuttleApi.Repo",
+  "repo": "Elixir.BusApi.Repo",
   "schema": null,
-  "table": "seat"
+  "table": "vehicle"
 }

@@ -1,4 +1,4 @@
-defmodule ShuttleApi.Application do
+defmodule BusApi.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,15 +8,15 @@ defmodule ShuttleApi.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: ShuttleApi.Worker.start_link(arg)
-      # {ShuttleApi.Worker, arg}
-      ShuttleApi.Repo,
-      {Plug.Cowboy, scheme: :http, plug: ShuttleApi.Booking.Router, options: [port: 4000]}
+      # Starts a worker by calling: BusApi.Worker.start_link(arg)
+      # {BusApi.Worker, arg}
+      BusApi.Repo,
+      {Plug.Cowboy, scheme: :http, plug: BusApi.Booking.Router, options: [port: 4000]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: ShuttleApi.Supervisor]
+    opts = [strategy: :one_for_one, name: BusApi.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

@@ -8,7 +8,7 @@ if config_env() == :prod do
       For example: ecto://USER:PASS@HOST/DATABASE
       """
 
-  config :shuttle_api, ShuttleApi.Repo,
+  config :bus_api, BusApi.Repo,
     url: database_url,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 end

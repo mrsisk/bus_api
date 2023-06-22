@@ -1,9 +1,9 @@
-defmodule ShuttleApi.MixProject do
+defmodule BusApi.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :shuttle_api,
+      app: :bus_api,
       version: "0.1.0",
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
@@ -15,7 +15,7 @@ defmodule ShuttleApi.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {ShuttleApi.Application, []}
+      mod: {BusApi.Application, []}
     ]
   end
 

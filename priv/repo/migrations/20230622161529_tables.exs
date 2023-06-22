@@ -1,4 +1,4 @@
-defmodule ShuttleApi.Repo.Migrations.Tables do
+defmodule BusApi.Repo.Migrations.Tables do
   @moduledoc """
   Updates resources based on their most recent snapshots.
 

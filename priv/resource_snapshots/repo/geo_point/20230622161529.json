@@ -17,7 +17,7 @@
       "primary_key?": false,
       "references": null,
       "size": null,
-      "source": "model",
+      "source": "name",
       "type": "text"
     },
     {
@@ -27,8 +27,18 @@
       "primary_key?": false,
       "references": null,
       "size": null,
-      "source": "capacity",
-      "type": "bigint"
+      "source": "lat",
+      "type": "float"
+    },
+    {
+      "allow_nil?": true,
+      "default": "nil",
+      "generated?": false,
+      "primary_key?": false,
+      "references": null,
+      "size": null,
+      "source": "lon",
+      "type": "float"
     },
     {
       "allow_nil?": false,
@@ -49,6 +59,31 @@
       "size": null,
       "source": "updated_at",
       "type": "utc_datetime_usec"
+    },
+    {
+      "allow_nil?": true,
+      "default": "nil",
+      "generated?": false,
+      "primary_key?": false,
+      "references": {
+        "destination_attribute": "id",
+        "destination_attribute_default": null,
+        "destination_attribute_generated": null,
+        "multitenancy": {
+          "attribute": null,
+          "global": null,
+          "strategy": null
+        },
+        "name": "geo_point_location_id_fkey",
+        "on_delete": null,
+        "on_update": null,
+        "primary_key?": true,
+        "schema": "public",
+        "table": "location"
+      },
+      "size": null,
+      "source": "location_id",
+      "type": "uuid"
     }
   ],
   "base_filter": null,
@@ -56,14 +91,14 @@
   "custom_indexes": [],
   "custom_statements": [],
   "has_create_action": true,
-  "hash": "94B5B1E1BD29C02E461DBABE90306ED80278DAE70F92E0AF018036C993FFE525",
+  "hash": "1D512227B4338FB5C0975087A1AC073D3F22AA95358517C581D231B171F107A6",
   "identities": [],
   "multitenancy": {
     "attribute": null,
     "global": null,
     "strategy": null
   },
-  "repo": "Elixir.ShuttleApi.Repo",
+  "repo": "Elixir.BusApi.Repo",
   "schema": null,
-  "table": "vehicle"
+  "table": "geo_point"
 }

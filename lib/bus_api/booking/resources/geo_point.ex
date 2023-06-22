@@ -1,17 +1,13 @@
-defmodule ShuttleApi.Booking.Resources.GeoPoint do
-    use Ash.Resource, data_layer: AshPostgres.DataLayer, extensions: [AshJsonApi.Resource]
-
+defmodule BusApi.Booking.Resources.GeoPoint do
+  use Ash.Resource, data_layer: AshPostgres.DataLayer, extensions: [AshJsonApi.Resource]
 
   postgres do
     table "geo_point"
-    repo ShuttleApi.Repo
+    repo(BusApi.Repo)
   end
 
   actions do
     defaults [:create, :read, :update, :destroy]
-
-
-
   end
 
   attributes do
@@ -25,19 +21,18 @@ defmodule ShuttleApi.Booking.Resources.GeoPoint do
   end
 
   relationships do
-    belongs_to :location, ShuttleApi.Booking.Resources.Location
+    belongs_to :location, BusApi.Booking.Resources.Location
   end
 
   json_api do
     type "geo"
 
     routes do
-      base "/geo"
+      base("/geo")
 
-      get :read
-      index :read
-      post :create
-
+      get(:read)
+      index(:read)
+      post(:create)
     end
   end
 end

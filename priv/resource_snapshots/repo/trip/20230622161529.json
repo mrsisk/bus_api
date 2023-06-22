@@ -101,14 +101,14 @@
   "custom_indexes": [],
   "custom_statements": [],
   "has_create_action": true,
-  "hash": "96C8898D56C3680165A0000E70426B77BB70448980AEE38024D5650B5D469109",
+  "hash": "60A3AFCFB0F114AA8C4D28E96CD590D9ADC5E85CCA09B3F7739C400C98E9EB99",
   "identities": [],
   "multitenancy": {
     "attribute": null,
     "global": null,
     "strategy": null
   },
-  "repo": "Elixir.ShuttleApi.Repo",
+  "repo": "Elixir.BusApi.Repo",
   "schema": null,
   "table": "trip"
 }

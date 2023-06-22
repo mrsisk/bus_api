@@ -21,26 +21,6 @@
       "type": "text"
     },
     {
-      "allow_nil?": true,
-      "default": "nil",
-      "generated?": false,
-      "primary_key?": false,
-      "references": null,
-      "size": null,
-      "source": "lat",
-      "type": "float"
-    },
-    {
-      "allow_nil?": true,
-      "default": "nil",
-      "generated?": false,
-      "primary_key?": false,
-      "references": null,
-      "size": null,
-      "source": "lon",
-      "type": "float"
-    },
-    {
       "allow_nil?": false,
       "default": "fragment(\"now()\")",
       "generated?": false,
@@ -74,7 +54,7 @@
           "global": null,
           "strategy": null
         },
-        "name": "geo_point_location_id_fkey",
+        "name": "route_to_id_fkey",
         "on_delete": null,
         "on_update": null,
         "primary_key?": true,
@@ -82,7 +62,57 @@
         "table": "location"
       },
       "size": null,
-      "source": "location_id",
+      "source": "to_id",
+      "type": "uuid"
+    },
+    {
+      "allow_nil?": true,
+      "default": "nil",
+      "generated?": false,
+      "primary_key?": false,
+      "references": {
+        "destination_attribute": "id",
+        "destination_attribute_default": null,
+        "destination_attribute_generated": null,
+        "multitenancy": {
+          "attribute": null,
+          "global": null,
+          "strategy": null
+        },
+        "name": "route_from_id_fkey",
+        "on_delete": null,
+        "on_update": null,
+        "primary_key?": true,
+        "schema": "public",
+        "table": "location"
+      },
+      "size": null,
+      "source": "from_id",
+      "type": "uuid"
+    },
+    {
+      "allow_nil?": true,
+      "default": "nil",
+      "generated?": false,
+      "primary_key?": false,
+      "references": {
+        "destination_attribute": "id",
+        "destination_attribute_default": null,
+        "destination_attribute_generated": null,
+        "multitenancy": {
+          "attribute": null,
+          "global": null,
+          "strategy": null
+        },
+        "name": "route_vehicle_id_fkey",
+        "on_delete": null,
+        "on_update": null,
+        "primary_key?": true,
+        "schema": "public",
+        "table": "vehicle"
+      },
+      "size": null,
+      "source": "vehicle_id",
       "type": "uuid"
     }
   ],
@@ -91,14 +121,14 @@
   "custom_indexes": [],
   "custom_statements": [],
   "has_create_action": true,
-  "hash": "D27E8D4EB4997054661A361E04F3C0444DA95C81F1A87DD6C4BA46C6A2A76759",
+  "hash": "6AF79B8D0DBA7990E7A22D579EFE084B354ACC921923F8B13A36751F8B1EFC04",
   "identities": [],
   "multitenancy": {
     "attribute": null,
     "global": null,
     "strategy": null
   },
-  "repo": "Elixir.ShuttleApi.Repo",
+  "repo": "Elixir.BusApi.Repo",
   "schema": null,
-  "table": "geo_point"
+  "table": "route"
 }

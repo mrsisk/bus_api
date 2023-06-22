@@ -1,11 +1,10 @@
-defmodule ShuttleApi.Booking.Resources.Trip do
+defmodule BusApi.Booking.Resources.Trip do
   use Ash.Resource, data_layer: AshPostgres.DataLayer, extensions: [AshJsonApi.Resource]
   require Ash.Query
 
-
   postgres do
     table "trip"
-    repo ShuttleApi.Repo
+    repo(BusApi.Repo)
   end
 
   attributes do
@@ -17,8 +16,6 @@ defmodule ShuttleApi.Booking.Resources.Trip do
     create_timestamp :inserted_at
     update_timestamp :updated_at
   end
-
-
 
   actions do
     defaults [:create, :read, :update, :destroy]
@@ -32,11 +29,9 @@ defmodule ShuttleApi.Booking.Resources.Trip do
 
       change manage_relationship(:route_id, :route, type: :append_and_remove)
     end
-
   end
 
   relationships do
-    belongs_to :route, ShuttleApi.Booking.Resources.Route
+    belongs_to :route, BusApi.Booking.Resources.Route
   end
-
 end

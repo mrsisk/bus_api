@@ -1,6 +1,6 @@
-defmodule ShuttleApi do
+defmodule BusApi do
   @moduledoc """
-  Documentation for `ShuttleApi`.
+  Documentation for `BusApi`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule ShuttleApi do
 
   ## Examples
 
-      iex> ShuttleApi.hello()
+      iex> BusApi.hello()
       :world
 
   """

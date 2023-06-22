@@ -1,9 +1,9 @@
-defmodule ShuttleApi.Booking.Resources.Seat do
+defmodule BusApi.Booking.Resources.Seat do
   use Ash.Resource, data_layer: AshPostgres.DataLayer, extensions: [AshJsonApi.Resource]
 
   postgres do
     table "seat"
-    repo(ShuttleApi.Repo)
+    repo(BusApi.Repo)
   end
 
   actions do
@@ -39,12 +39,11 @@ defmodule ShuttleApi.Booking.Resources.Seat do
       attribute :label, :string
       create_timestamp :inserted_at
       update_timestamp :updated_at
-
     end
   end
 
   relationships do
-    belongs_to :vehicle, ShuttleApi.Booking.Resources.Vehicle
+    belongs_to :vehicle, BusApi.Booking.Resources.Vehicle
   end
 
   json_api do

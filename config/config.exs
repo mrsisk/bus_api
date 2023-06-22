@@ -2,15 +2,12 @@ import Config
 
 config :ash, :use_all_identities_in_manage_relationship?, false
 
-config :shuttle_api, :ash_apis, [ShuttleApi.Booking]
+config :bus_api, :ash_apis, [BusApi.Booking]
 
-config :shuttle_api, ecto_repos: [ShuttleApi.Repo ]
+config :bus_api, ecto_repos: [BusApi.Repo]
 
 config :mime, :types, %{
   "application/vnd.api+json" => ["json"]
 }
-
-
-
 
 import_config "#{config_env()}.exs"
