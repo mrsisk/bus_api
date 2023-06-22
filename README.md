@@ -19,8 +19,7 @@ To view all the routes that are avialable for a given resource, run this in your
 BusApi.Booking.Resources.GeoPoint
 |> AshJsonApi.Resource.Info.routes()
 ```
-Your can do the same for any other resource.
-To test if the api is working running http request using a client of your choice
+Your can do the same for any other resource. To test if the api is working run http request using any client of your choice.
 ```
 curl -X POST 'localhost:4000/geo' \
     --header 'Accept: application/vnd.api+json' \
